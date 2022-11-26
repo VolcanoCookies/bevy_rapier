@@ -57,6 +57,7 @@ impl From<RigidBody> for RigidBodyType {
 /// not be able to read/modify its velocity).
 #[derive(Copy, Clone, Debug, Default, PartialEq, Component, Reflect, FromReflect)]
 #[reflect(Component, PartialEq)]
+#[cfg_attr(feature = "serde-serialize", derive(Serialize, Deserialize))]
 pub struct Velocity {
     /// The linear velocity of the rigid-body.
     pub linvel: Vect,
@@ -223,6 +224,7 @@ impl From<LockedAxes> for RapierLockedAxes {
 /// This force is applied at each timestep.
 #[derive(Copy, Clone, Debug, Default, PartialEq, Component, Reflect, FromReflect)]
 #[reflect(Component, PartialEq)]
+#[cfg_attr(feature = "serde-serialize", derive(Serialize, Deserialize))]
 pub struct ExternalForce {
     /// The linear force applied to the rigid-body.
     pub force: Vect,
@@ -295,6 +297,7 @@ impl SubAssign for ExternalForce {
 /// on Bevy’s change detection).
 #[derive(Copy, Clone, Debug, Default, PartialEq, Component, Reflect, FromReflect)]
 #[reflect(Component, PartialEq)]
+#[cfg_attr(feature = "serde-serialize", derive(Serialize, Deserialize))]
 pub struct ExternalImpulse {
     /// The linear impulse applied to the rigid-body.
     pub impulse: Vect,
